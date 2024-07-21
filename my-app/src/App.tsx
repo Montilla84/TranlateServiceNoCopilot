@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Typography, Button, Card, CardContent, CardActions, IconButton } from '@mui/material';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
 import './index.css';
 
 // Importar SVGs como URLs
@@ -10,7 +13,14 @@ const App: React.FC = () => {
   const [count, setCount] = useState(0);
 
   return (
+    <Router>
     <Container className="app-container">
+    <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about-us">About Us</Link></li>
+          </ul>
+        </nav>
       <div className="icon-container">
         <IconButton href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} alt="Vite logo" />
@@ -41,7 +51,13 @@ const App: React.FC = () => {
       <Typography variant="body1" sx={{ marginTop: 30, color: '#666' }}>
         Click on the Vite and React logos to learn more
       </Typography>
-    </Container>
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUs />} />
+        </Routes>
+      </Container>
+    </Router>
+
   );
 }
 
