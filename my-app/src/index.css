@@ -69,6 +69,27 @@ button:focus-visible {
   padding: 0 16px; /* Ajusta el padding si es necesario */
 }
 
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
