@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Header from '../Header'; // Actualiza la ruta al componente Header
 import { BrowserRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom'; // Importa solo el paquete para extender expect
-import '@testing-library/jest-dom/extend-expect';
+
 
 test('renders the Header component with navigation links', () => {
   render(
