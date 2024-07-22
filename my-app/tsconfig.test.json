@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig.app.json",
+    "compilerOptions": {
+      "module": "commonjs", // Jest usa `commonjs` en lugar de `ESNext`
+      "esModuleInterop": true // Asegura la interoperabilidad con módulos CommonJS
+    },
+    "include": ["src/**/*.test.ts", "src/**/*.test.tsx"]
+  }
+  

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';  // Importa el Header desde el nuevo directorio
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
+import PostalZip from './pages/PostalZip';  // Importar la nueva página
 import './index.css';
 
 const App: React.FC = () => {
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/postal-zip" element={<PostalZip />} />  {/* Nueva ruta */}
         </Routes>
       </Container>
     </Router>
