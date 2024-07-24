@@ -14,8 +14,9 @@ const Header: React.FC = () => {
           My App
         </Typography>
         <Button color="inherit" component={Link} to="/">Home</Button>
+        <Button color="inherit" component={Link} to="/pricing">Pricing</Button>
         <Button color="inherit" component={Link} to="/about-us">About Us</Button>
-        <Button color="inherit" component={Link} to="/postal-zip">Postal Zip</Button>  {/* Nuevo enlace */}
+        <Button color="inherit" component={Link} to="/postal-zip">Postal Zip</Button>  
       </Toolbar>
     </AppBar>
   );

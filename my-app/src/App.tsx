@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import PostalZip from './pages/PostalZip';  // Importar la nueva página
 import './index.css';
+import Pricing from './pages/Pricing';
 
 const App: React.FC = () => {
   return (
@@ -15,7 +16,9 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/postal-zip" element={<PostalZip />} />  {/* Nueva ruta */}
+          <Route path="/postal-zip" element={<PostalZip />} />  
+          <Route path="/pricing" element={<Pricing />} /> 
+
         </Routes>
       </Container>
     </Router>

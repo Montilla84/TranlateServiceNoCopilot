@@ -90,6 +90,26 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
+/* PricingStyles.css */
+.body-global {
+  background-color: #fff; /* Replace with your theme's common white color */
+}
+
+.appBar {
+  position: relative;
+}
+
+.toolbarTitle {
+  flex: 1;
+}
+
+.layout {
+  width: auto;
+  margin-left: 24px; /* Adjust based on your theme's spacing */
+  margin-right: 24px; /* Adjust based on your theme's spacing */
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
