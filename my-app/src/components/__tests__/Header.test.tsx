@@ -4,11 +4,12 @@ import Header from '../Header'; // Actualiza la ruta al componente Header
 import { BrowserRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom'; // Importa solo el paquete para extender expect
 
-
 test('renders the Header component with navigation links', () => {
+  const toggleDrawerMock = jest.fn(); // Crea un mock para la función toggleDrawer
+
   render(
     <Router>
-      <Header />
+      <Header toggleDrawer={toggleDrawerMock} />
     </Router>
   );
   
