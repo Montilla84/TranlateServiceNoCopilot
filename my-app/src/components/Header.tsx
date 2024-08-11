@@ -2,6 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import LanguageSwitcher from './LanguageSwitcher'; // Importar el componente LanguageSwitcher
 
 interface HeaderProps {
   toggleDrawer: (open: boolean) => void;
@@ -20,6 +21,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
         <Button color="inherit" component={Link} to="/">Home</Button>
         <Button color="inherit" component={Link} to="/about-us">About Us</Button>
         <Button color="inherit" component={Link} to="/postal-zip">Postal Zip</Button>
+        <LanguageSwitcher /> {/* Añadir el selector de idioma en el header */}
       </Toolbar>
     </AppBar>
   );
