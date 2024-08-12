@@ -21,6 +21,8 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
         <Button color="inherit" component={Link} to="/">Home</Button>
         <Button color="inherit" component={Link} to="/about-us">About Us</Button>
         <Button color="inherit" component={Link} to="/postal-zip">Postal Zip</Button>
+        <Button color="inherit" component={Link} to="/login">Login</Button> {/* Agregar botón de Login */}
+        <Button color="inherit" component={Link} to="/SignUp">Sign Up</Button> {/* Agregar botón de Sign Up */}
         <LanguageSwitcher /> {/* Añadir el selector de idioma en el header */}
       </Toolbar>
     </AppBar>

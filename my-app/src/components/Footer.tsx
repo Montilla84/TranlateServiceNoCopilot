@@ -10,7 +10,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 
 const Footer: React.FC = () => {
     return (
-        <Box component="footer" sx={{ bgcolor: 'primary.dark', color: 'white', p: 4 }}>
+        <Box component="footer" sx={{ bgcolor: 'primary.dark', color: 'white', p: 4 , width: '100%'}}>
             <Grid container spacing={4} justifyContent="space-between">
                 <Grid item xs={12} sm={6} md={3}>
                     <Typography variant="h6">Services</Typography>
