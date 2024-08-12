@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
-import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import authRoutes from './routes/auth';
+import connectDB from './config/db';  // Importa la conexión a la base de datos
+import authRoutes from './routes/authRoutes';
 
 dotenv.config();
 
@@ -13,9 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Conectar a MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/miapp')
-  .then(() => console.log('Conectado a MongoDB'))
-  .catch((error) => console.error('Error al conectar a MongoDB:', error));
+connectDB();  // Utiliza la función desde db.ts
 
 // Rutas de autenticación
 app.use('/api/auth', authRoutes);

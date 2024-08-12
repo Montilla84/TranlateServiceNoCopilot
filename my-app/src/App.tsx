@@ -3,6 +3,8 @@ import { Container, Drawer, List, ListItemButton, Toolbar } from '@mui/material'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import PostalZip from './pages/PostalZip';
@@ -30,6 +32,8 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/postal-zip" element={<PostalZip />} />  
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Container>
       <Footer />
