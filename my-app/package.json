@@ -44,5 +44,16 @@
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "vite-plugin-svgr": "^4.2.0"
+  },
+  "vite": {
+    "server": {
+      "proxy": {
+        "/api": {
+          "target": "http://localhost:5000",
+          "changeOrigin": true,
+          "secure": false
+        }
+      }
+    }
   }
 }

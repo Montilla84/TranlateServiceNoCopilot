@@ -26,7 +26,7 @@
   "include": [
     "src",
     "jest-setup.ts"
-  ],
+, "../server/_test_/authRoutes.test.ts"  ],
   "exclude": [
     "node_modules",
     "build",
