@@ -1,5 +1,5 @@
 ﻿import { Request, Response } from "express";
-import User from "../models/userModel";
+import User from "../models/userModel.ts";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -28,7 +28,9 @@ export const registerUser = async (req: Request, res: Response) => {
 
         res.status(201).json({ token });
     } catch (err) {
-        res.status(500).json({ message: "Server error" });
+        console.error('Error during user registration:', err);  // Agrega esta línea para loguear el error
+        const errorMessage = (err as Error).message;
+        res.status(500).json({ message: "Server error", error: errorMessage });  // Agrega el mensaje de error al response
     }
 };
 
