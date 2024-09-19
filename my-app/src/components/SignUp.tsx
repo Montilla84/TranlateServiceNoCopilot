@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Button, TextField, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import instance from '../axiosConfig';
 
 const SignUp = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
   const navigate = useNavigate();
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/auth/register', { email, password, name });
+      const response = await instance.post('/api/auth/register', { username, email, password });
       console.log('Registro exitoso', response.data);
       navigate('/login');  // Redirige al login después del registro
     } catch (error) {
@@ -29,13 +29,13 @@ const SignUp = () => {
           margin="normal"
           required
           fullWidth
-          id="name"
-          label="Nombre"
-          name="name"
-          autoComplete="name"
+          id="username"
+          label="Nombre de Usuario"
+          name="username"
+          autoComplete="username"
           autoFocus
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <TextField
           variant="outlined"

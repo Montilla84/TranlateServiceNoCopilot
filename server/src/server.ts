@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import connectDB from './config/db';  // Importa la conexión a la base de datos
-import authRoutes from './routes/authRoutes';
+import connectDB from './config/db.ts';  // Importa la conexión a la base de datos
+import authRoutes from './routes/authRoutes.ts';
 
 dotenv.config();
 
