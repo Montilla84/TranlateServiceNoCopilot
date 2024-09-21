@@ -3,7 +3,11 @@ import { Button, TextField, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = () => {
+interface LoginProps {
+  showNotification: (message: string, severity: 'success' | 'error' | 'warning' | 'info') => void;
+}
+
+const Login: React.FC<LoginProps> = ({ showNotification }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -11,13 +15,14 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/auth/login', { email, password });
-      console.log('Login exitoso', response.data);
+      await axios.post('/api/auth/login', { email, password });
+      showNotification('Login exitoso', 'success');
       navigate('/');  // Redirige al home después del login
     } catch (error) {
-      console.error('Error en el login:', error);
+      showNotification('Error en el login', 'error');
     }
   };
+
 
   return (
     <Container component="main" maxWidth="xs">

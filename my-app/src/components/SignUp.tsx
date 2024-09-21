@@ -3,7 +3,11 @@ import { Button, TextField, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import instance from '../axiosConfig';
 
-const SignUp = () => {
+interface SignUpProps {
+  showNotification: (message: string, severity: 'success' | 'error' | 'warning' | 'info') => void;
+}
+
+const SignUp: React.FC<SignUpProps> = ({ showNotification }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,11 +16,11 @@ const SignUp = () => {
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await instance.post('/api/auth/register', { username, email, password });
-      console.log('Registro exitoso', response.data);
-      navigate('/login');  // Redirige al login después del registro
+      await instance.post('/api/auth/register', { username, email, password });
+      showNotification('Registro exitoso', 'success');
+      navigate('/');  // Redirige al home después del registro
     } catch (error) {
-      console.error('Error en el registro:', error);
+      showNotification('Error en el registro', 'error');
     }
   };
 
@@ -30,7 +34,7 @@ const SignUp = () => {
           required
           fullWidth
           id="username"
-          label="Nombre de Usuario"
+          label="Nombre de usuario"
           name="username"
           autoComplete="username"
           autoFocus
