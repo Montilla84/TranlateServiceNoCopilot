@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import instance from '../axiosConfig';
 
 interface LoginProps {
   showNotification: (message: string, severity: 'success' | 'error' | 'warning' | 'info') => void;
@@ -15,7 +15,7 @@ const Login: React.FC<LoginProps> = ({ showNotification }) => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('/api/auth/login', { email, password });
+      await instance.post('/api/auth/login', { email, password });
       showNotification('Login exitoso', 'success');
       navigate('/');  // Redirige al home después del login
     } catch (error) {

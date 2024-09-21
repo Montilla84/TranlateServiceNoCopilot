@@ -15,7 +15,7 @@ interface NotificationProps {
 
 const Notification: React.FC<NotificationProps> = ({ open, message, severity, onClose }) => {
   return (
-    <Snackbar open={open} autoHideDuration={6000} onClose={onClose}>
+    <Snackbar open={open} autoHideDuration={6000} onClose={onClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
       <Alert onClose={onClose} severity={severity} sx={{ width: '100%' }}>
         {message}
       </Alert>
