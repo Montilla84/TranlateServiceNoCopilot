@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import LanguageSwitcher from './LanguageSwitcher'; // Importar el componente LanguageSwitcher
-import UserProfile from './UserProfile'; // Importar el componente UserProfile
+import LanguageSwitcher from './LanguageSwitcher';
+import UserProfile from './UserProfile';
+import instance from '../axiosConfig'; // Importar la instancia de Axios
 
 interface HeaderProps {
   toggleDrawer: (open: boolean) => void;
@@ -13,13 +14,15 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
   const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simula una llamada a una API para obtener el nombre de usuario
     const fetchUsername = async () => {
-      // Aquí deberías reemplazar esto con la llamada real a la API
-      const user = await new Promise<{ username: string }>((resolve) =>
-        setTimeout(() => resolve({ username: 'John Doe' }), 1000)
-      );
-      setUsername(user.username);
+      try {
+        // Reemplaza esta URL con la URL real de tu API
+        const response = await instance.get('/user'); // Usar la instancia de Axios
+        const data = await response.data;
+        setUsername(data.username);
+      } catch (error) {
+        console.error('Error fetching username:', error);
+      }
     };
 
     fetchUsername();

@@ -2,8 +2,24 @@ import { Router, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User, { IUser } from '../models/User';
+import authMiddleware, { AuthRequest } from '../middleware/authMiddleware'; 
 
 const router = Router();
+
+// Ruta para obtener la información del usuario
+router.get('/user', authMiddleware, async (req: AuthRequest, res: Response) => {
+  try {
+    const userId = req.userId; // Asegúrate de que el userId esté disponible en el request
+    const user = await User.findById(userId).select('-password'); // Excluir el campo de contraseña
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener la información del usuario' });
+  }
+});
+
 
 // Registro de usuario
 router.post('/register', async (req: Request, res: Response) => {
