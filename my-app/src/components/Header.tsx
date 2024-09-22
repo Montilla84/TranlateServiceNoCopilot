@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
     const fetchUsername = async () => {
       try {
         // Reemplaza esta URL con la URL real de tu API
-        const response = await instance.get('/user'); // Usar la instancia de Axios
+        const response = await instance.get('/api/auth/user'); // Usar la instancia de Axios
         const data = await response.data;
         setUsername(data.username);
       } catch (error) {
