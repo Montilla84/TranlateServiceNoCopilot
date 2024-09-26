@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import LanguageSwitcher from './LanguageSwitcher';
 import UserProfile from './UserProfile';
 import instance from '../axiosConfig'; // Importar la instancia de Axios
+import { useAuth } from '../context/authContext'; // Import the useAuth hook
 
 interface HeaderProps {
   toggleDrawer: (open: boolean) => void;
@@ -12,12 +13,24 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
   const [username, setUsername] = useState<string | null>(null);
+  const { isAuthenticated } = useAuth(); // Get authentication status
 
   useEffect(() => {
     const fetchUsername = async () => {
       try {
-        // Reemplaza esta URL con la URL real de tu API
-        const response = await instance.get('/api/auth/user'); // Usar la instancia de Axios
+        const token = localStorage.getItem('token'); // Get the token from localStorage
+        if (!token) {
+          throw new Error('No token found');
+        }
+        console.log('Token:', token); // Log the token
+        const response = await instance.get('/api/auth/user', {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the request headers
+          },
+        });
+
+        console.log('API Response:', response); // Log the API response
+
         const data = await response.data;
         setUsername(data.username);
       } catch (error) {
@@ -25,8 +38,13 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
       }
     };
 
-    fetchUsername();
-  }, []);
+    if (isAuthenticated) {
+      console.log('User is authenticated'); // Log authentication status
+      fetchUsername();
+    } else {
+      console.log('User is not authenticated'); // Log authentication status
+    }
+  }, [isAuthenticated]);
 
   console.log('Header Username:', username); // Agregar console.log para depuración
 

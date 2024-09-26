@@ -1,4 +1,8 @@
 ﻿import { Request, Response } from "express";
+
+interface AuthenticatedRequest extends Request {
+    userId?: string;
+}
 import User from "../models/userModel.ts";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -53,6 +57,17 @@ export const loginUser = async (req: Request, res: Response) => {
         });
 
         res.status(200).json({ token });
+    } catch (err) {
+    }
+};
+
+export const getUser = async (req: AuthenticatedRequest, res: Response) => {
+    try {
+        const user = await User.findById(req.userId).select('-password');
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json(user);
     } catch (err) {
         res.status(500).json({ message: "Server error" });
     }
