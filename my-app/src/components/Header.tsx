@@ -42,6 +42,7 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
       console.log('User is authenticated'); // Log authentication status
       fetchUsername();
     } else {
+      setUsername(null);
       console.log('User is not authenticated'); // Log authentication status
     }
   }, [isAuthenticated]);
