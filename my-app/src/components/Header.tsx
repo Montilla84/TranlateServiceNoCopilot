@@ -60,10 +60,10 @@ const Header: React.FC<HeaderProps> = ({ toggleDrawer }) => {
         <Button color="inherit" component={Link} to="/">Home</Button>
         <Button color="inherit" component={Link} to="/about-us">About Us</Button>
         <Button color="inherit" component={Link} to="/postal-zip">Postal Zip</Button>
-        <Button color="inherit" component={Link} to="/login">Login</Button>
-        <Button color="inherit" component={Link} to="/SignUp">Sign Up</Button>
-        <LanguageSwitcher />
+        {!isAuthenticated && <Button color="inherit" component={Link} to="/login">Login</Button>}
+        {!isAuthenticated && <Button color="inherit" component={Link} to="/SignUp">Sign Up</Button>}
         {username && <UserProfile username={username} />} {/* Añadir el componente UserProfile */}
+        <LanguageSwitcher />
       </Toolbar>
     </AppBar>
   );
