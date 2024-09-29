@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n/i18n';
+import { AuthProvider } from './context/authContext'; // Importar AuthProvider
 import './index.css';
 
 // Crear un tema MUI
@@ -24,7 +25,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
      <I18nextProvider i18n={i18n}>
     <ThemeProvider theme={theme}>
       <CssBaseline /> {/* Proporciona un conjunto de estilos base */}
-      <App />
+      <AuthProvider> {/* Envolver la aplicación con AuthProvider */}
+          <App />
+      </AuthProvider>
     </ThemeProvider>
     </I18nextProvider>
   </React.StrictMode>

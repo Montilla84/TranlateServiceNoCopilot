@@ -48,48 +48,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.icon-container {
-  display: flex;
-  justify-content: center;
-  gap: 16px; /* Espacio entre los íconos */
-  margin-bottom: 16px; /* Espacio debajo de los íconos */
-}
-
-.icon-container img {
-  width: 100px; /* Tamaño de los íconos */
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 800px; /* Ajusta el ancho máximo si es necesario */
-  padding: 0 16px; /* Ajusta el padding si es necesario */
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  gap: 10px;
-}
-
-nav ul li {
-  display: inline;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #1a1a1a;
-  font-weight: bold;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

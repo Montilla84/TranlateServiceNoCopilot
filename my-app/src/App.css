@@ -1,43 +1,4 @@
-/* index.css */
-
-/* Reset y configuración básica */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.87);
-  background-color: #f0f0f0;
-}
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-/* Estilos para navegación */
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-}
-
+/* App.css */
 /* Estilos de logos */
 .logo {
   height: 6em;
@@ -88,4 +49,30 @@ nav ul li a:hover {
 
 .home-container {
   padding: 20px;
+}
+.icon-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* Espacio entre los íconos */
+  margin-bottom: 16px; /* Espacio debajo de los íconos */
+}
+.icon-container img {
+  width: 100px; /* Tamaño de los íconos */
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+}
+nav ul li {
+  display: inline;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+nav ul li a:hover {
+  text-decoration: underline;
 }
